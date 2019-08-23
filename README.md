@@ -15,7 +15,7 @@ npm install axios
 
 ### Install Cors
 ```
-cors: allows restricted resources on a web page to be requested from another domain outside the domain
+cors: espress.js middleware - allows restricted resources on a web page to be requested from another domain outside the domain
 
 npm install cors
 ```
@@ -48,6 +48,22 @@ node index.js
 > go to http://localhost:4000/graphql and run the desired query {yourQuery}
 
 ```
+
+### Troubleshooting 
+```
+> remove node-modules folder and reinstall dependencies from package.json
+
+rm -rf node_modules/
+npm install
+
+> You might need to reinstall cors as dependency if you haven't done that in the first place 
+for further information I found the following article quite helpful
+https://www.prisma.io/blog/enabling-cors-for-express-graphql-apollo-server-1ef999bfb38d
+
+npm install cors
+
+```
+
 
 ### Compiles and minifies for production
 ```
