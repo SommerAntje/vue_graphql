@@ -1,17 +1,36 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h3>Example 1</h3>
+    <div>
+      Data: {{ example1 }}
+    </div>
+    <button @click="getLanguage">Get Language</button>
+    <hr> 
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import axios from 'axios'
 export default {
   name: 'app',
-  components: {
-    HelloWorld
+  data () {
+    return {
+      example1: ''
+    }
+  },
+  methods: {
+    async getLanguage () {
+      try {
+        const res = await axios.post(
+          'http://localhost:4000/graphql', {
+          query: '{ language }'
+        })
+        this.example1 = res.data.data.language
+      } catch (e) {
+        // eslint-disable-next-line
+        console.log('err', e)
+      }
+    }
   }
 }
 </script>
